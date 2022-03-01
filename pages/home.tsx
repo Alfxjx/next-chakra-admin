@@ -1,5 +1,5 @@
 import { useSession, signIn, signOut } from "next-auth/react";
-import { Button } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import { Layout } from "../components/Layout";
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
 
 	return (
 		<Layout>
-			<div>this is homepage</div>
+			<Box h={1000}>this is homepage</Box>
 		</Layout>
 	);
 }
