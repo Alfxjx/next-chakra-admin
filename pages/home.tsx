@@ -7,7 +7,7 @@ export default function Home() {
 
 	return (
 		<Layout>
-			<Box h={1000}>this is homepage</Box>
+			<Box>this is homepage</Box>
 		</Layout>
 	);
 }
