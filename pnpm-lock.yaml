@@ -8,6 +8,7 @@ specifiers:
   '@types/react': 17.0.39
   eslint: 8.10.0
   eslint-config-next: 12.1.0
+  formik: ^2.2.9
   framer-motion: '6'
   next: 12.1.0
   next-auth: ^4.2.1
@@ -20,6 +21,7 @@ dependencies:
   '@chakra-ui/react': 1.8.5_189e00a0932443dc19f4914207ca4c5f
   '@emotion/react': 11.8.1_a0c521d4794c7ad97f5f4c1c4a7d5818
   '@emotion/styled': 11.8.1_d24c5a2cd50724e2cbcff1306f0cc72d
+  formik: r2.cnpmjs.org/formik/2.2.9_react@17.0.2
   framer-motion: 6.2.8_react-dom@17.0.2+react@17.0.2
   next: 12.1.0_react-dom@17.0.2+react@17.0.2
   next-auth: 4.2.1_react-dom@17.0.2+react@17.0.2
@@ -3273,6 +3275,31 @@ packages:
       hoist-non-react-statics: r2.cnpmjs.org/hoist-non-react-statics/3.3.2
     dev: false
 
+  r2.cnpmjs.org/deepmerge/2.2.1:
+    resolution: {integrity: sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/deepmerge/-/deepmerge-2.2.1.tgz}
+    name: deepmerge
+    version: 2.2.1
+    engines: {node: '>=0.10.0'}
+    dev: false
+
+  r2.cnpmjs.org/formik/2.2.9_react@17.0.2:
+    resolution: {integrity: sha512-LQLcISMmf1r5at4/gyJigGn0gOwFbeEAlji+N9InZF6LIMXnFNkO42sCI8Jt84YZggpD4cPWObAZaxpEFtSzNA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/formik/-/formik-2.2.9.tgz}
+    id: r2.cnpmjs.org/formik/2.2.9
+    name: formik
+    version: 2.2.9
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      deepmerge: r2.cnpmjs.org/deepmerge/2.2.1
+      hoist-non-react-statics: r2.cnpmjs.org/hoist-non-react-statics/3.3.2
+      lodash: r2.cnpmjs.org/lodash/4.17.21
+      lodash-es: r2.cnpmjs.org/lodash-es/4.17.21
+      react: 17.0.2
+      react-fast-compare: r2.cnpmjs.org/react-fast-compare/2.0.4
+      tiny-warning: r2.cnpmjs.org/tiny-warning/1.0.3
+      tslib: r2.cnpmjs.org/tslib/1.14.1
+    dev: false
+
   r2.cnpmjs.org/hoist-non-react-statics/3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz}
     name: hoist-non-react-statics
@@ -3301,10 +3328,40 @@ packages:
     version: 1.1.4
     dev: false
 
+  r2.cnpmjs.org/lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/lodash-es/-/lodash-es-4.17.21.tgz}
+    name: lodash-es
+    version: 4.17.21
+    dev: false
+
+  r2.cnpmjs.org/lodash/4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/lodash/-/lodash-4.17.21.tgz}
+    name: lodash
+    version: 4.17.21
+    dev: false
+
+  r2.cnpmjs.org/react-fast-compare/2.0.4:
+    resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/react-fast-compare/-/react-fast-compare-2.0.4.tgz}
+    name: react-fast-compare
+    version: 2.0.4
+    dev: false
+
   r2.cnpmjs.org/react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/react-is/-/react-is-16.13.1.tgz}
     name: react-is
     version: 16.13.1
+    dev: false
+
+  r2.cnpmjs.org/tiny-warning/1.0.3:
+    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/tiny-warning/-/tiny-warning-1.0.3.tgz}
+    name: tiny-warning
+    version: 1.0.3
+    dev: false
+
+  r2.cnpmjs.org/tslib/1.14.1:
+    resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/tslib/-/tslib-1.14.1.tgz}
+    name: tslib
+    version: 1.14.1
     dev: false
 
   r2.cnpmjs.org/void-elements/3.1.0:

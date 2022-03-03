@@ -3,7 +3,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { NextRouter, useRouter } from "next/router";
 import NextLink from "next/link";
-import { useSession, signOut } from "next-auth/react";
 import {
 	Accordion,
 	AccordionButton,
@@ -23,6 +22,7 @@ import {
 	BreadcrumbLink,
 } from "@chakra-ui/react";
 import style from "./Layout.module.css";
+import { WebLogo } from "./WebLogo";
 
 interface ILayoutProps {
 	children: ReactNode;
@@ -70,26 +70,7 @@ function AccordList({ menuList }: { menuList: IMenu[] }) {
 	);
 }
 
-function WebLogo() {
-	return (
-		<NextLink href={"/home"} passHref>
-			<HStack cursor={"pointer"} ml={2} my={1}>
-				<Image src="/favicon.ico" width={36} height={36} alt="logo"></Image>
-				<Text
-					bgGradient="linear(to-l, #7928CA, #FF0080)"
-					bgClip="text"
-					fontWeight="extrabold"
-					fontSize="md"
-				>
-					NextChakraAdmin
-				</Text>
-			</HStack>
-		</NextLink>
-	);
-}
-
 export function Layout({ children }: ILayoutProps) {
-	const { data: session } = useSession();
 	const router: NextRouter = useRouter();
 
 	const menuList: IMenu[] = [
@@ -130,6 +111,10 @@ export function Layout({ children }: ILayoutProps) {
 		}
 	};
 
+	const signOut = () => {
+		router.push("/login");
+	};
+
 	return (
 		<div className={style.layout}>
 			<Head>
@@ -140,7 +125,7 @@ export function Layout({ children }: ILayoutProps) {
 					<WebLogo></WebLogo>
 				</HStack>
 				<HStack justifyContent={"flex-end"}>
-					<span>{session?.user?.name}</span>
+					<span>{123}</span>
 					<Button onClick={switchI18n}>i18n</Button>
 					<Button onClick={() => signOut()}>Sign out</Button>
 				</HStack>

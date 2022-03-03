@@ -1,3 +1,4 @@
 {
-	"home": "this is homepage"
+	"home": "this is homepage",
+	"login-wrong": "Login failed. something went wrong."
 }

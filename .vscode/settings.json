@@ -6,5 +6,8 @@
     "source.addMissingImports",
     "source.fixAll.format",
     "source.fixAll.eslint"
+  ],
+  "i18n-ally.localesPaths": [
+    "public/locales"
   ]
 }
