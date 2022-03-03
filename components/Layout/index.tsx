@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import { NextRouter, useRouter } from "next/router";
 import NextLink from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import {
@@ -89,6 +90,7 @@ function WebLogo() {
 
 export function Layout({ children }: ILayoutProps) {
 	const { data: session } = useSession();
+	const router: NextRouter = useRouter();
 
 	const menuList: IMenu[] = [
 		{
@@ -119,6 +121,15 @@ export function Layout({ children }: ILayoutProps) {
 		},
 	];
 
+	const switchI18n = () => {
+		const { pathname, asPath, query } = router;
+		if (router.locale === "zh") {
+			router.push({ pathname, query }, asPath, { locale: "en" });
+		} else {
+			router.push({ pathname, query }, asPath, { locale: "zh" });
+		}
+	};
+
 	return (
 		<div className={style.layout}>
 			<Head>
@@ -129,7 +140,8 @@ export function Layout({ children }: ILayoutProps) {
 					<WebLogo></WebLogo>
 				</HStack>
 				<HStack justifyContent={"flex-end"}>
-					<span>Signed in as {session?.user?.name}</span>
+					<span>{session?.user?.name}</span>
+					<Button onClick={switchI18n}>i18n</Button>
 					<Button onClick={() => signOut()}>Sign out</Button>
 				</HStack>
 			</HStack>

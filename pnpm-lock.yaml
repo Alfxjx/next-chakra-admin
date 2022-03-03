@@ -11,6 +11,7 @@ specifiers:
   framer-motion: '6'
   next: 12.1.0
   next-auth: ^4.2.1
+  next-i18next: ^10.5.0
   react: 17.0.2
   react-dom: 17.0.2
   typescript: 4.5.5
@@ -22,6 +23,7 @@ dependencies:
   framer-motion: 6.2.8_react-dom@17.0.2+react@17.0.2
   next: 12.1.0_react-dom@17.0.2+react@17.0.2
   next-auth: 4.2.1_react-dom@17.0.2+react@17.0.2
+  next-i18next: 10.5.0_caa633a00319350dbda42996613fe26c
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
 
@@ -921,14 +923,6 @@ packages:
     resolution: {integrity: sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==}
     dev: false
 
-  /@emotion/is-prop-valid/0.8.8:
-    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
-    requiresBuild: true
-    dependencies:
-      '@emotion/memoize': 0.7.4
-    dev: false
-    optional: true
-
   /@emotion/is-prop-valid/1.1.2:
     resolution: {integrity: sha512-3QnhqeL+WW88YjYbQL5gUIkthuMw7a0NGbZ7wfFVk2kg/CK5w8w5FFa0RzWjyY1+sujN0NWbtSHH6OJmWHtJpQ==}
     dependencies:
@@ -1254,7 +1248,6 @@ packages:
 
   /@types/prop-types/15.7.4:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
-    dev: true
 
   /@types/react/17.0.39:
     resolution: {integrity: sha512-UVavlfAxDd/AgAacMa60Azl7ygyQNRwC/DsHZmKgNvPmRR5p70AJ5Q9EAmL2NWOJmeV+vVUI4IAP7GZrN8h8Ug==}
@@ -1262,11 +1255,9 @@ packages:
       '@types/prop-types': 15.7.4
       '@types/scheduler': 0.16.2
       csstype: 3.0.10
-    dev: true
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
-    dev: true
 
   /@types/warning/3.0.0:
     resolution: {integrity: sha1-DSUBJorY+ZYrdA04fEZU9fjiPlI=}
@@ -1550,6 +1541,11 @@ packages:
     resolution: {integrity: sha512-12VZfFIu+wyVbBebyHmRTuEE/tZrB4tJToWcwAMcsp3h4+sHR+fMJWbKpYiCRWlhFBq+KNyO8rIV9rTkeVmznQ==}
     requiresBuild: true
     dev: true
+
+  /core-js/3.21.1:
+    resolution: {integrity: sha512-FRq5b/VMrWlrmCzwRrpDYNxyHP9BcAZC+xHJaqTgIE5091ZV1NTmyh0sGOg5XqpnHvR0svdy0sv1gWA1zmhxig==}
+    requiresBuild: true
+    dev: false
 
   /cosmiconfig/6.0.0:
     resolution: {integrity: sha512-xb3ZL6+L8b9JLLCx3ZdoZy4+2ECphCMo2PwqgP1tlfVq6M6YReyzBJtvWWtbDSpNr9hn96pkCiZqUcFEc+54Qg==}
@@ -2024,7 +2020,7 @@ packages:
       style-value-types: 5.0.0
       tslib: 2.3.1
     optionalDependencies:
-      '@emotion/is-prop-valid': 0.8.8
+      '@emotion/is-prop-valid': r2.cnpmjs.org/@emotion/is-prop-valid/0.8.8
     dev: false
 
   /framesync/5.3.0:
@@ -2166,6 +2162,12 @@ packages:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
     dependencies:
       react-is: 16.13.1
+    dev: false
+
+  /i18next/21.6.12:
+    resolution: {integrity: sha512-xlGTPdu2g5PZEUIE6TA1mQ9EIAAv9nMFONzgwAIrKL/KTmYYWufQNGgOmp5Og1PvgUji+6i1whz0rMdsz1qaKw==}
+    dependencies:
+      '@babel/runtime': 7.17.2
     dev: false
 
   /ignore/4.0.6:
@@ -2476,6 +2478,27 @@ packages:
       uuid: 8.3.2
     dev: false
 
+  /next-i18next/10.5.0_caa633a00319350dbda42996613fe26c:
+    resolution: {integrity: sha512-+Xj/v5gqpEUBKKAaFCZ76+Ps6OGAaIgGowJTF67wTcmIQbHrcHMPjHwPTbnpXy7uHrH8os7i4eAfRENAv/6xwg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      next: '>= 10.0.0'
+      react: '>= 16.8.0'
+    dependencies:
+      '@babel/runtime': 7.17.2
+      '@types/hoist-non-react-statics': r2.cnpmjs.org/@types/hoist-non-react-statics/3.3.1
+      core-js: 3.21.1
+      hoist-non-react-statics: r2.cnpmjs.org/hoist-non-react-statics/3.3.2
+      i18next: 21.6.12
+      i18next-fs-backend: r2.cnpmjs.org/i18next-fs-backend/1.1.4
+      next: 12.1.0_react-dom@17.0.2+react@17.0.2
+      react: 17.0.2
+      react-i18next: 11.15.5_2c37a602a29bb6bd53f3de707a8cfcc5
+    transitivePeerDependencies:
+      - react-dom
+      - react-native
+    dev: false
+
   /next/12.1.0_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha512-s885kWvnIlxsUFHq9UGyIyLiuD0G3BUC/xrH0CEnH5lHEWkwQcHOORgbDF0hbrW9vr/7am4ETfX4A7M6DjrE7Q==}
     engines: {node: '>=12.22.0'}
@@ -2777,6 +2800,27 @@ packages:
       use-sidecar: 1.0.5_react@17.0.2
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /react-i18next/11.15.5_2c37a602a29bb6bd53f3de707a8cfcc5:
+    resolution: {integrity: sha512-vBWuVEQgrhZrGKpyv8FmJ7Zs5jRQWl794Tte7yzJ0okZqqi3jd6j2pLYNg441WcREsbIOvWdiDXbY7W6E93p1A==}
+    peerDependencies:
+      i18next: '>= 19.0.0'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.17.2
+      html-escaper: r2.cnpmjs.org/html-escaper/2.0.2
+      html-parse-stringify: r2.cnpmjs.org/html-parse-stringify/3.0.1
+      i18next: 21.6.12
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /react-is/16.13.1:
@@ -3208,4 +3252,64 @@ packages:
   /yaml/1.10.2:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
+    dev: false
+
+  r2.cnpmjs.org/@emotion/is-prop-valid/0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz}
+    name: '@emotion/is-prop-valid'
+    version: 0.8.8
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
+  r2.cnpmjs.org/@types/hoist-non-react-statics/3.3.1:
+    resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz}
+    name: '@types/hoist-non-react-statics'
+    version: 3.3.1
+    dependencies:
+      '@types/react': 17.0.39
+      hoist-non-react-statics: r2.cnpmjs.org/hoist-non-react-statics/3.3.2
+    dev: false
+
+  r2.cnpmjs.org/hoist-non-react-statics/3.3.2:
+    resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz}
+    name: hoist-non-react-statics
+    version: 3.3.2
+    dependencies:
+      react-is: r2.cnpmjs.org/react-is/16.13.1
+    dev: false
+
+  r2.cnpmjs.org/html-escaper/2.0.2:
+    resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/html-escaper/-/html-escaper-2.0.2.tgz}
+    name: html-escaper
+    version: 2.0.2
+    dev: false
+
+  r2.cnpmjs.org/html-parse-stringify/3.0.1:
+    resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/html-parse-stringify/-/html-parse-stringify-3.0.1.tgz}
+    name: html-parse-stringify
+    version: 3.0.1
+    dependencies:
+      void-elements: r2.cnpmjs.org/void-elements/3.1.0
+    dev: false
+
+  r2.cnpmjs.org/i18next-fs-backend/1.1.4:
+    resolution: {integrity: sha512-/MfAGMP0jHonV966uFf9PkWWuDjPYLIcsipnSO3NxpNtAgRUKLTwvm85fEmsF6hGeu0zbZiCQ3W74jwO6K9uXA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/i18next-fs-backend/-/i18next-fs-backend-1.1.4.tgz}
+    name: i18next-fs-backend
+    version: 1.1.4
+    dev: false
+
+  r2.cnpmjs.org/react-is/16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/react-is/-/react-is-16.13.1.tgz}
+    name: react-is
+    version: 16.13.1
+    dev: false
+
+  r2.cnpmjs.org/void-elements/3.1.0:
+    resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/void-elements/-/void-elements-3.1.0.tgz}
+    name: void-elements
+    version: 3.1.0
+    engines: {node: '>=0.10.0'}
     dev: false
