@@ -1,13 +1,11 @@
 {
-  "editor.tabSize": 2,
-  "editor.detectIndentation": false,
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": [
-    "source.addMissingImports",
-    "source.fixAll.format",
-    "source.fixAll.eslint"
-  ],
-  "i18n-ally.localesPaths": [
-    "public/locales"
-  ]
+	"editor.tabSize": 2,
+	"editor.detectIndentation": false,
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": [
+		"source.addMissingImports",
+		"source.fixAll.format",
+		"source.fixAll.eslint"
+	],
+	"i18n-ally.localesPaths": ["public/locales"]
 }
