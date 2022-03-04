@@ -15,6 +15,7 @@ specifiers:
   next-i18next: ^10.5.0
   react: 17.0.2
   react-dom: 17.0.2
+  react-icons: ^4.3.1
   typescript: 4.5.5
 
 dependencies:
@@ -28,6 +29,7 @@ dependencies:
   next-i18next: 10.5.0_caa633a00319350dbda42996613fe26c
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  react-icons: 4.3.1_react@17.0.2
 
 devDependencies:
   '@types/node': 17.0.21
@@ -924,6 +926,14 @@ packages:
   /@emotion/hash/0.8.0:
     resolution: {integrity: sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==}
     dev: false
+
+  /@emotion/is-prop-valid/0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
 
   /@emotion/is-prop-valid/1.1.2:
     resolution: {integrity: sha512-3QnhqeL+WW88YjYbQL5gUIkthuMw7a0NGbZ7wfFVk2kg/CK5w8w5FFa0RzWjyY1+sujN0NWbtSHH6OJmWHtJpQ==}
@@ -2022,7 +2032,7 @@ packages:
       style-value-types: 5.0.0
       tslib: 2.3.1
     optionalDependencies:
-      '@emotion/is-prop-valid': r2.cnpmjs.org/@emotion/is-prop-valid/0.8.8
+      '@emotion/is-prop-valid': 0.8.8
     dev: false
 
   /framesync/5.3.0:
@@ -2825,6 +2835,14 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: false
 
+  /react-icons/4.3.1_react@17.0.2:
+    resolution: {integrity: sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 17.0.2
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -3255,16 +3273,6 @@ packages:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
     dev: false
-
-  r2.cnpmjs.org/@emotion/is-prop-valid/0.8.8:
-    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz}
-    name: '@emotion/is-prop-valid'
-    version: 0.8.8
-    requiresBuild: true
-    dependencies:
-      '@emotion/memoize': 0.7.4
-    dev: false
-    optional: true
 
   r2.cnpmjs.org/@types/hoist-non-react-statics/3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz}
