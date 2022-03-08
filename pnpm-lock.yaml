@@ -3354,6 +3354,17 @@ packages:
     version: 2.0.4
     dev: false
 
+  r2.cnpmjs.org/react-icons/4.3.1_react@17.0.2:
+    resolution: {integrity: sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/react-icons/-/react-icons-4.3.1.tgz}
+    id: r2.cnpmjs.org/react-icons/4.3.1
+    name: react-icons
+    version: 4.3.1
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 17.0.2
+    dev: false
+
   r2.cnpmjs.org/react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/react-is/-/react-is-16.13.1.tgz}
     name: react-is

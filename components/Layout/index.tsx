@@ -1,6 +1,5 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import { NextRouter, useRouter } from "next/router";
 import NextLink from "next/link";
 import {
@@ -23,6 +22,8 @@ import {
 } from "@chakra-ui/react";
 import style from "./Layout.module.css";
 import { WebLogo } from "./WebLogo";
+import { MdTranslate, MdLogout, MdAnchor, MdCommute } from "react-icons/md";
+import { useState } from "react";
 
 interface ILayoutProps {
 	children: ReactNode;
@@ -30,26 +31,28 @@ interface ILayoutProps {
 
 export interface IMenu {
 	title: string;
+	icon?: React.ReactChild;
 	links?: string;
 	children?: IMenu[];
 }
 
 function AccordList({ menuList }: { menuList: IMenu[] }) {
 	return (
-		<Accordion my={2} allowMultiple defaultIndex={[0]}>
+		<Accordion my={2} allowMultiple>
 			{menuList.map((menu) => {
 				return (
 					<AccordionItem border={"none"} key={menu.title}>
 						<h2>
 							<AccordionButton>
-								<Box flex="1" textAlign="left">
-									{menu.title}
-								</Box>
+								<HStack flex="1" textAlign="left">
+									{menu.icon}
+									<span>{menu.title}</span>
+								</HStack>
 								<AccordionIcon />
 							</AccordionButton>
 						</h2>
 						<AccordionPanel pb={4}>
-							<VStack ml={2} alignItems={"flex-start"}>
+							<VStack ml={8} alignItems={"flex-start"}>
 								{menu.children?.map((item) => {
 									return (
 										<NextLink
@@ -72,31 +75,35 @@ function AccordList({ menuList }: { menuList: IMenu[] }) {
 
 export function Layout({ children }: ILayoutProps) {
 	const router: NextRouter = useRouter();
+	// TODO add useSWR axios for api routes, meeting GET /api/sidebar?locale=zh/en
+	// const [menuList, setMenuList] = useState<IMenu[]>([]);
 
 	const menuList: IMenu[] = [
 		{
-			title: "test1",
+			title: "Dashboard",
+			icon: <MdAnchor></MdAnchor>,
 			children: [
 				{
-					title: "sub1-test1",
-					links: "/dashboard/test",
+					title: "Home",
+					links: "/dashboard/home-one",
 				},
 				{
-					title: "sub2-test1",
-					links: "#",
+					title: "Substitution",
+					links: "/dashboard/home-another",
 				},
 			],
 		},
 		{
-			title: "test2",
+			title: "Management",
+			icon: <MdCommute></MdCommute>,
 			children: [
 				{
-					title: "sub1-test2",
-					links: "#",
+					title: "User Management",
+					links: "/management/user-management",
 				},
 				{
-					title: "sub2-test2",
-					links: "#",
+					title: "Product Management",
+					links: "/management/product-management",
 				},
 			],
 		},
@@ -125,9 +132,13 @@ export function Layout({ children }: ILayoutProps) {
 					<WebLogo></WebLogo>
 				</HStack>
 				<HStack justifyContent={"flex-end"}>
-					<span>{123}</span>
-					<Button onClick={switchI18n}>i18n</Button>
-					<Button onClick={() => signOut()}>Sign out</Button>
+					<span>{"hello"}</span>
+					<Button variant={"ghost"} onClick={switchI18n}>
+						<MdTranslate></MdTranslate>
+					</Button>
+					<Button variant={"outline"} onClick={() => signOut()}>
+						<MdLogout></MdLogout>
+					</Button>
 				</HStack>
 			</HStack>
 			<Grid h={"full"} templateColumns="repeat(24, 1fr)" gap={0}>
