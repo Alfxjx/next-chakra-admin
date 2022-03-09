@@ -75,7 +75,7 @@ function AccordList({ menuList }: { menuList: IMenu[] }) {
 
 export function Layout({ children }: ILayoutProps) {
 	const router: NextRouter = useRouter();
-	// TODO add useSWR axios for api routes, meeting GET /api/sidebar?locale=zh/en
+	// TODO add axios for api routes, meeting GET /api/sidebar?locale=zh/en
 	// const [menuList, setMenuList] = useState<IMenu[]>([]);
 
 	const menuList: IMenu[] = [

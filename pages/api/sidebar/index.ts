@@ -59,7 +59,7 @@ const zhLayout: IMenu[] = [
 	},
 ];
 
-export default function handler(
+export default function sidebar(
 	{ query: { locale } }: NextApiRequest,
 	res: NextApiResponse
 ) {

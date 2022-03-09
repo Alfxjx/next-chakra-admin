@@ -1,4 +1,5 @@
 {
-	"home": "首页在此",
-	"login-wrong": "登录失败，检查密码"
+  "home": "首页在此",
+  "login-wrong": "登录失败，检查密码",
+  "username": "Username"
 }
