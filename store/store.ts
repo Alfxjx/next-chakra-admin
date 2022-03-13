@@ -17,7 +17,7 @@ const persistConfig = {
 	key: "root",
 	version: 1,
 	storage,
-	timeout: 1000,
+	timeout: 1,
 };
 
 const rootReducer = { user: userReducer };
