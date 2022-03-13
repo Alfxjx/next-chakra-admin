@@ -23,6 +23,7 @@ import {
 import style from "./Layout.module.css";
 import { WebLogo } from "./WebLogo";
 import { MdTranslate, MdLogout, MdAnchor, MdCommute } from "react-icons/md";
+import { useAppSelector } from "@/store/hooks";
 import { useState } from "react";
 
 interface ILayoutProps {
@@ -75,6 +76,8 @@ function AccordList({ menuList }: { menuList: IMenu[] }) {
 
 export function Layout({ children }: ILayoutProps) {
 	const router: NextRouter = useRouter();
+	const username = useAppSelector((state) => state.user.username);
+
 	// TODO add axios for api routes, meeting GET /api/sidebar?locale=zh/en
 	// const [menuList, setMenuList] = useState<IMenu[]>([]);
 
@@ -132,7 +135,7 @@ export function Layout({ children }: ILayoutProps) {
 					<WebLogo></WebLogo>
 				</HStack>
 				<HStack justifyContent={"flex-end"}>
-					<span>{"hello"}</span>
+					<span>Hello, {username}</span>
 					<Button variant={"ghost"} onClick={switchI18n}>
 						<MdTranslate></MdTranslate>
 					</Button>

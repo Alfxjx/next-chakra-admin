@@ -18,6 +18,8 @@ import { Formik, Form, Field } from "formik";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MdLockOutline, MdLockOpen } from "react-icons/md";
+import { useAppDispatch } from "@/store/hooks";
+import { getUserInfo } from "@/store/modules/userSlice";
 import { WebLogo } from "../components/Layout/WebLogo";
 import { loginApi } from "@/requests";
 
@@ -39,6 +41,8 @@ function LoginForm() {
 	const router = useRouter();
 	const toast = useToast();
 	const { t } = useTranslation("common");
+	const dispatch = useAppDispatch();
+
 	const [show, setShow] = useState(false);
 	const hanlePasswordShow = () => setShow(!show);
 
@@ -57,7 +61,7 @@ function LoginForm() {
 				const { username, password } = values;
 				loginApi({ username, password })
 					.then((res) => {
-						// TODO save user info in redux store
+						dispatch(getUserInfo({ username, password }));
 						setTimeout(() => {
 							actions.setSubmitting(false);
 							router.push("/home");
