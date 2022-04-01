@@ -24,9 +24,17 @@ import {
 import style from "./Layout.module.css";
 import { WebLogo } from "./WebLogo";
 import { NCAFooter } from "./NCAFooter";
-import { MdTranslate, MdLogout, MdAnchor, MdCommute } from "react-icons/md";
-import { useAppSelector } from "@/store/hooks";
+import {
+	MdTranslate,
+	MdLogout,
+	MdAnchor,
+	MdCommute,
+	MdReorder,
+} from "react-icons/md";
+
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { useState } from "react";
+import { getExpand } from "@/store/modules/sidebarSlice";
 
 interface ILayoutProps {
 	children: ReactNode;
@@ -39,46 +47,81 @@ export interface IMenu {
 	children?: IMenu[];
 }
 
-function AccordList({ menuList }: { menuList: IMenu[] }) {
+interface IAccordList {
+	menuList: IMenu[];
+	isExpand: boolean;
+	handleExpand: () => void;
+}
+
+function AccordList({ menuList, isExpand, handleExpand }: IAccordList) {
+	const dispatch = useAppDispatch();
+
+	const handleClick = () => {
+		dispatch(getExpand({ isExpand: !isExpand }));
+		handleExpand();
+	};
 	return (
-		<Accordion my={2} allowMultiple>
-			{menuList.map((menu) => {
-				return (
-					<AccordionItem border={"none"} key={menu.title}>
-						<h2>
-							<AccordionButton>
-								<HStack flex="1" textAlign="left">
-									{menu.icon}
-									<span>{menu.title}</span>
-								</HStack>
-								<AccordionIcon />
-							</AccordionButton>
-						</h2>
-						<AccordionPanel pb={4}>
-							<VStack ml={8} alignItems={"flex-start"}>
-								{menu.children?.map((item) => {
-									return (
-										<NextLink
-											key={item.title}
-											href={item.links as string}
-											passHref
+		<VStack h={"90vh"} align={"flex-start"} className={style.accord}>
+			<Accordion w={"full"} flex={"1"} my={2} allowMultiple>
+				{menuList.map((menu) => {
+					return (
+						<AccordionItem border={"none"} key={menu.title}>
+							<h2>
+								<AccordionButton>
+									<NextLink href={menu.links as string} passHref>
+										<HStack
+											flex="1"
+											textAlign={isExpand ? "left" : "center"}
+											justify={isExpand ? "flex-start" : "center"}
 										>
-											<Link>{item.title}</Link>
-										</NextLink>
-									);
-								})}
-							</VStack>
-						</AccordionPanel>
-					</AccordionItem>
-				);
-			})}
-		</Accordion>
+											{menu.icon}
+											{isExpand && <span>{menu.title}</span>}
+										</HStack>
+									</NextLink>
+									{isExpand && <AccordionIcon />}
+								</AccordionButton>
+							</h2>
+							<AccordionPanel pb={4}>
+								<VStack ml={8} alignItems={"flex-start"}>
+									{menu.children?.map((item) => {
+										return (
+											<NextLink
+												key={item.title}
+												href={item.links as string}
+												passHref
+											>
+												<Link>{item.title}</Link>
+											</NextLink>
+										);
+									})}
+								</VStack>
+							</AccordionPanel>
+						</AccordionItem>
+					);
+				})}
+			</Accordion>
+			<HStack flex={0} w={"full"} justify={"center"} align="stretch">
+				<Button
+					variant={"link"}
+					_focus={{ boxShadow: "none" }}
+					onClick={handleClick}
+				>
+					<MdReorder />
+				</Button>
+			</HStack>
+		</VStack>
 	);
 }
 
 export function Layout({ children }: ILayoutProps) {
 	const router: NextRouter = useRouter();
 	const username = useAppSelector((state) => state.user.username);
+
+	const isExpandState = useAppSelector(
+		(state) => state.sidebar.isExpand
+	) as boolean;
+
+	const [sidebarWidth, setWidth] = useState(isExpandState ? 4 : 1);
 
 	// TODO add axios for api routes, meeting GET /api/sidebar?locale=zh/en
 	// TODO Active Links
@@ -88,6 +131,7 @@ export function Layout({ children }: ILayoutProps) {
 	const menuList: IMenu[] = [
 		{
 			title: "Dashboard",
+			links: "/home",
 			icon: <MdAnchor></MdAnchor>,
 			children: [
 				{
@@ -102,6 +146,7 @@ export function Layout({ children }: ILayoutProps) {
 		},
 		{
 			title: "Management",
+			links: "/management",
 			icon: <MdCommute></MdCommute>,
 			children: [
 				{
@@ -115,6 +160,10 @@ export function Layout({ children }: ILayoutProps) {
 			],
 		},
 	];
+
+	const handleExpand = () => {
+		sidebarWidth === 4 ? setWidth(1) : setWidth(4);
+	};
 
 	const switchI18n = () => {
 		const { pathname, asPath, query } = router;
@@ -151,11 +200,20 @@ export function Layout({ children }: ILayoutProps) {
 			</HStack>
 			<Grid h={"full"} templateColumns="repeat(24, 1fr)" gap={0}>
 				{/* side bar */}
-				<GridItem overflow={"scroll"} colSpan={4} bg="#001529" color="#fff">
-					<AccordList menuList={menuList}></AccordList>
+				<GridItem
+					overflow={"scroll"}
+					colSpan={sidebarWidth}
+					bg="#001529"
+					color="#fff"
+				>
+					<AccordList
+						menuList={menuList}
+						isExpand={isExpandState}
+						handleExpand={handleExpand}
+					></AccordList>
 				</GridItem>
 				{/* main content */}
-				<GridItem overflow={"scroll"} colSpan={20} bg="gray.100">
+				<GridItem overflow={"scroll"} colSpan={24 - sidebarWidth} bg="gray.100">
 					<VStack w="full" minH={"100vh"} px="4" pb="20" align="stretch">
 						<Box flex={0} ml={2} mt={2}>
 							<Breadcrumb pl={2} pt={2} boxSizing="border-box">

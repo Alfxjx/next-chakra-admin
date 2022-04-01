@@ -12,6 +12,7 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import userReducer from "./modules/userSlice";
+import sidebarReducer from "./modules/sidebarSlice";
 
 const persistConfig = {
 	key: "root",
@@ -20,7 +21,7 @@ const persistConfig = {
 	timeout: 1,
 };
 
-const rootReducer = { user: userReducer };
+const rootReducer = { user: userReducer, sidebar: sidebarReducer };
 
 const persistedReducer = persistReducer(
 	persistConfig,

@@ -5,6 +5,8 @@ import { appWithTranslation } from "next-i18next";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
+
+import { theme } from "../chakra.theme";
 import { PersistLoading } from "@/components/PersistLoading";
 
 import store from "@/store/store";
@@ -13,7 +15,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 	const persistor = persistStore(store);
 
 	return (
-		<ChakraProvider>
+		<ChakraProvider theme={theme}>
 			<Provider store={store}>
 				<PersistGate loading={<PersistLoading />} persistor={persistor}>
 					<Component {...pageProps} />
