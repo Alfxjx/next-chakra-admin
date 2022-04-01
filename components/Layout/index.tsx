@@ -19,9 +19,11 @@ import {
 	Breadcrumb,
 	BreadcrumbItem,
 	BreadcrumbLink,
+	Flex,
 } from "@chakra-ui/react";
 import style from "./Layout.module.css";
 import { WebLogo } from "./WebLogo";
+import { NCAFooter } from "./NCAFooter";
 import { MdTranslate, MdLogout, MdAnchor, MdCommute } from "react-icons/md";
 import { useAppSelector } from "@/store/hooks";
 import { useState } from "react";
@@ -79,6 +81,8 @@ export function Layout({ children }: ILayoutProps) {
 	const username = useAppSelector((state) => state.user.username);
 
 	// TODO add axios for api routes, meeting GET /api/sidebar?locale=zh/en
+	// TODO Active Links
+	// TODO Dynamic BreadCrumbs
 	// const [menuList, setMenuList] = useState<IMenu[]>([]);
 
 	const menuList: IMenu[] = [
@@ -130,6 +134,7 @@ export function Layout({ children }: ILayoutProps) {
 			<Head>
 				<title>Next Chakra Admin</title>
 			</Head>
+			{/* header */}
 			<HStack py={2} px={4} justifyContent={"space-between"}>
 				<HStack justifyContent={"space-between"}>
 					<WebLogo></WebLogo>
@@ -145,26 +150,32 @@ export function Layout({ children }: ILayoutProps) {
 				</HStack>
 			</HStack>
 			<Grid h={"full"} templateColumns="repeat(24, 1fr)" gap={0}>
+				{/* side bar */}
 				<GridItem overflow={"scroll"} colSpan={4} bg="#001529" color="#fff">
 					<AccordList menuList={menuList}></AccordList>
 				</GridItem>
+				{/* main content */}
 				<GridItem overflow={"scroll"} colSpan={20} bg="gray.100">
-					<Box h="full" ml={2} mt={2}>
-						<Breadcrumb pl={2} pt={2} boxSizing="border-box">
-							<BreadcrumbItem>
-								<BreadcrumbLink href="#">Home</BreadcrumbLink>
-							</BreadcrumbItem>
+					<VStack w="full" minH={"100vh"} px="4" pb="20" align="stretch">
+						<Box flex={0} ml={2} mt={2}>
+							<Breadcrumb pl={2} pt={2} boxSizing="border-box">
+								<BreadcrumbItem>
+									<BreadcrumbLink href="#">Home</BreadcrumbLink>
+								</BreadcrumbItem>
 
-							<BreadcrumbItem>
-								<BreadcrumbLink href="#">Docs</BreadcrumbLink>
-							</BreadcrumbItem>
-
-							<BreadcrumbItem isCurrentPage>
-								<BreadcrumbLink href="#">Breadcrumb</BreadcrumbLink>
-							</BreadcrumbItem>
-						</Breadcrumb>
-						{children}
-					</Box>
+								<BreadcrumbItem>
+									<BreadcrumbLink href="#">Docs</BreadcrumbLink>
+								</BreadcrumbItem>
+								<BreadcrumbItem isCurrentPage>
+									<BreadcrumbLink href="#">Breadcrumb</BreadcrumbLink>
+								</BreadcrumbItem>
+							</Breadcrumb>
+						</Box>
+						<Box flex={1}>{children}</Box>
+						<Box flex={0}>
+							<NCAFooter />
+						</Box>
+					</VStack>
 				</GridItem>
 			</Grid>
 		</div>
