@@ -61,46 +61,58 @@ function AccordList({ menuList, isExpand, handleExpand }: IAccordList) {
 		handleExpand();
 	};
 	return (
-		<VStack h={"90vh"} align={"flex-start"} className={style.accord}>
-			<Accordion w={"full"} flex={"1"} my={2} allowMultiple>
-				{menuList.map((menu) => {
-					return (
-						<AccordionItem border={"none"} key={menu.title}>
-							<h2>
-								<AccordionButton>
-									<NextLink href={menu.links as string} passHref>
-										<HStack
-											flex="1"
-											textAlign={isExpand ? "left" : "center"}
-											justify={isExpand ? "flex-start" : "center"}
-										>
-											{menu.icon}
-											{isExpand && <span>{menu.title}</span>}
-										</HStack>
-									</NextLink>
-									{isExpand && <AccordionIcon />}
-								</AccordionButton>
-							</h2>
-							<AccordionPanel pb={4}>
-								<VStack ml={8} alignItems={"flex-start"}>
-									{menu.children?.map((item) => {
-										return (
-											<NextLink
-												key={item.title}
-												href={item.links as string}
-												passHref
+		<VStack
+			h={"90vh"}
+			align={isExpand ? "flex-start" : "flex-end"}
+			className={style.accord}
+		>
+			{isExpand && (
+				<Accordion w={"full"} flex={"1"} my={2} allowMultiple>
+					{menuList.map((menu) => {
+						return (
+							<AccordionItem border={"none"} key={menu.title}>
+								<h2>
+									<AccordionButton>
+										<NextLink href={menu.links as string} passHref>
+											<HStack
+												flex="1"
+												textAlign={isExpand ? "left" : "center"}
+												justify={isExpand ? "flex-start" : "center"}
 											>
-												<Link>{item.title}</Link>
-											</NextLink>
-										);
-									})}
-								</VStack>
-							</AccordionPanel>
-						</AccordionItem>
-					);
-				})}
-			</Accordion>
-			<HStack flex={0} w={"full"} justify={"center"} align="stretch">
+												{menu.icon}
+												{isExpand && <span>{menu.title}</span>}
+											</HStack>
+										</NextLink>
+										{isExpand && <AccordionIcon />}
+									</AccordionButton>
+								</h2>
+								<AccordionPanel pb={4}>
+									<VStack ml={8} alignItems={"flex-start"}>
+										{menu.children?.map((item) => {
+											return (
+												<NextLink
+													key={item.title}
+													href={item.links as string}
+													passHref
+												>
+													<Link>{item.title}</Link>
+												</NextLink>
+											);
+										})}
+									</VStack>
+								</AccordionPanel>
+							</AccordionItem>
+						);
+					})}
+				</Accordion>
+			)}
+			<HStack
+				flex={isExpand ? 0 : 1}
+				w={"full"}
+				pb={4}
+				justify={"flex-start"}
+				align={"flex-end"}
+			>
 				<Button
 					variant={"link"}
 					_focus={{ boxShadow: "none" }}
