@@ -110,13 +110,14 @@ function AccordList({ menuList, isExpand, handleExpand }: IAccordList) {
 				flex={isExpand ? 0 : 1}
 				w={"full"}
 				pb={4}
-				justify={"flex-start"}
+				justify={"center"}
 				align={"flex-end"}
 			>
 				<Button
 					variant={"link"}
 					_focus={{ boxShadow: "none" }}
 					onClick={handleClick}
+					pb={4}
 				>
 					<MdReorder />
 				</Button>
@@ -196,7 +197,12 @@ export function Layout({ children }: ILayoutProps) {
 				<title>Next Chakra Admin</title>
 			</Head>
 			{/* header */}
-			<HStack py={2} px={4} justifyContent={"space-between"}>
+			<HStack
+				py={2}
+				px={4}
+				justifyContent={"space-between"}
+				bg="rgba(255,255,255,0.2)"
+			>
 				<HStack justifyContent={"space-between"}>
 					<WebLogo></WebLogo>
 				</HStack>

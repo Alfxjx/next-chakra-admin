@@ -6,7 +6,7 @@ export function WebLogo() {
 	return (
 		<NextLink href={"/home"} passHref>
 			<HStack cursor={"pointer"} ml={2} my={1}>
-				<Image src="/favicon.ico" width={36} height={36} alt="logo"></Image>
+				<Image src="/favicon.ico" width={24} height={24} alt="logo"></Image>
 				<Text
 					bgGradient="linear(to-l, #7928CA, #FF0080)"
 					bgClip="text"
